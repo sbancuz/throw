@@ -2,9 +2,26 @@
 
 A zig library to add some metadata to an error. 
 
+
+## Install
 >[!warning]
 >This is a joke of a library, use it at your own risk!
 >Available only on x86_64
+
+```sh
+zig fetch --save  git+https://github.com/sbancuz/throw
+```
+
+```zig
+// build.zig
+const throw = b.dependency("throw", .{
+	.target = target,
+	.optimize = optimize,
+});
+exe.root_module.addImport("throw", throw.module("throw"));
+```
+
+## Example
 
 ```zig
 const throw = @import("throw");
@@ -20,7 +37,7 @@ fn foo() !void {
 
 pub fn main() void {
 	foo() catch {
-		const r = reason(metadata);
+		const r = throw.reason(metadata);
 		std.debug.print("ERROR! {}\n", .{r});
 	};
 }
