@@ -6,7 +6,6 @@ A zig library to add some metadata to an error.
 ## Install
 >[!warning]
 >This is a joke of a library, use it at your own risk!
->Available only on x86_64
 
 ```sh
 zig fetch --save  git+https://github.com/sbancuz/throw
