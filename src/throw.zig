@@ -15,18 +15,3 @@ pub inline fn fit(err: anyerror, v: anytype) !void {
 pub inline fn reason(T: type) T {
     return @as(*T, @ptrFromInt(ptr)).*;
 }
-
-const metadata = struct {
-    bar: usize = 20,
-};
-
-fn foo() !void {
-    try fit(error.Sad, metadata{});
-}
-
-pub fn main() void {
-    foo() catch {
-        const r = reason(metadata);
-        std.debug.print("ERROR! {}\n", .{r});
-    };
-}
