@@ -32,13 +32,14 @@ const metadata = struct {
 };
 
 fn foo() !void {
-	try throw.fit(error.Sad, metadata{});
+	try throw.fit(error.Sad, metadata{ .bar = 24 });
 }
 
 pub fn main() void {
 	foo() catch {
 		const r = throw.reason(metadata);
 		std.debug.print("ERROR! {}\n", .{r});
+		// >> ERROR! 24\n
 	};
 }
 
